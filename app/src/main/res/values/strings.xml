@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MindValleyTest</string>
+    <string name="new_episodes">New Episodes</string>
+    <string name="new_episode_image">New Episode Image</string>
 </resources>
