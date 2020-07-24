@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    app:shimmer_auto_start="true">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/channel_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/channel_icon_placeholder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/channel_title"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="2dp"
+                android:background="@color/shimmer_bg"
+                app:layout_constraintBottom_toTopOf="@+id/count"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@+id/channel_icon"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <View
+                android:id="@+id/count"
+                android:layout_width="0dp"
+                android:layout_height="16dp"
+                android:background="@color/shimmer_bg"
+                app:layout_constraintBottom_toBottomOf="@+id/channel_icon"
+                app:layout_constraintEnd_toEndOf="@+id/channel_title"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@+id/channel_title"
+                app:layout_constraintWidth_percent="0.2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/view_one"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/channel_icon"
+                app:layout_constraintWidth_percent="0.8">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/series_card"
+                    android:layout_width="0dp"
+                    android:layout_height="172dp"
+                    app:cardBackgroundColor="@color/shimmer_bg"
+                    app:cardCornerRadius="6.4dp"
+                    app:cardElevation="20dp"
+                    app:cardForegroundColor="@color/shimmer_bg"
+                    app:cardPreventCornerOverlap="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/series_title"
+                    android:layout_width="0dp"
+                    android:layout_height="17dp"
+                    android:layout_marginTop="11dp"
+                    android:background="@color/shimmer_bg"
+                    app:layout_constraintEnd_toEndOf="@+id/series_card"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@+id/series_card"
+                    app:layout_constraintTop_toBottomOf="@+id/series_card"
+                    app:layout_constraintWidth_percent="0.6" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@+id/view_one"
+                app:layout_constraintTop_toTopOf="@+id/view_one"
+                app:layout_constraintWidth_percent="0.8">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/series_card_2"
+                    android:layout_width="0dp"
+                    android:layout_height="172dp"
+                    app:cardBackgroundColor="@color/shimmer_bg"
+                    app:cardCornerRadius="6.4dp"
+                    app:cardElevation="20dp"
+                    app:cardForegroundColor="@color/shimmer_bg"
+                    app:cardPreventCornerOverlap="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/series_title_2"
+                    android:layout_width="0dp"
+                    android:layout_height="17dp"
+                    android:layout_marginTop="11dp"
+                    android:background="@color/shimmer_bg"
+                    app:layout_constraintEnd_toEndOf="@+id/series_card_2"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@+id/series_card_2"
+                    app:layout_constraintTop_toBottomOf="@+id/series_card_2"
+                    app:layout_constraintWidth_percent="0.6" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+
+</com.facebook.shimmer.ShimmerFrameLayout>

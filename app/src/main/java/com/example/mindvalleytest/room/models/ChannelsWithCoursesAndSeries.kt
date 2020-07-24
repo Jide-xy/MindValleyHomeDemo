@@ -13,4 +13,6 @@ data class ChannelsWithCoursesAndSeries(
     val series: List<Series>,
     @Relation(parentColumn = "title", entityColumn = "channelTitle")
     val courses: List<Course>
-)
+) {
+    fun isSeries() = series.isEmpty().not()
+}

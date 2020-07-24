@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/new_episode_card"
         app:layout_constraintWidth_percent="0.9" />
 
-    <TextView
+    <View
         android:id="@+id/channel_title"
         android:layout_width="0dp"
         android:layout_height="13dp"

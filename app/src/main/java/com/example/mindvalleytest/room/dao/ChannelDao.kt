@@ -29,7 +29,7 @@ abstract class ChannelDao {
     abstract suspend fun deleteChannel(id: String, title: String)
 
     @Transaction
-    suspend fun insertChannelsWithCoursesAndSeries(channels: List<ChannelsWithCoursesAndSeries>) {
+    open suspend fun insertChannelsWithCoursesAndSeries(channels: List<ChannelsWithCoursesAndSeries>) {
         for (channel in channels) {
             deleteChannel(channel.channel.id, channel.channel.title)
             insertChannel(channel.channel)

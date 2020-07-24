@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/series_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="6.4dp"
+        app:cardElevation="20dp"
+        app:cardForegroundColor="@android:color/transparent"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/series_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="172dp"
+            android:contentDescription="@string/series_image"
+            android:scaleType="centerCrop"
+            tools:src="@color/colorAccent" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/series_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="@+id/series_card"
+        app:layout_constraintStart_toStartOf="@+id/series_card"
+        app:layout_constraintTop_toBottomOf="@+id/series_card"
+        tools:text="The Cure For Loneliness" />
+</androidx.constraintlayout.widget.ConstraintLayout>

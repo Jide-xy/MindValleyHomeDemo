@@ -2,4 +2,8 @@
     <string name="app_name">MindValleyTest</string>
     <string name="new_episodes">New Episodes</string>
     <string name="new_episode_image">New Episode Image</string>
+    <string name="channel_icon">Channel Icon</string>
+    <string name="series_image">Series Image</string>
+    <string name="channels">Channels</string>
+    <string name="browse_by_categories">Browse by categories</string>
 </resources>

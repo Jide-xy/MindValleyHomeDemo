@@ -1,23 +1,25 @@
 package com.example.mindvalleytest.di
 
-import com.example.mindvalleytest.MindValleyApplication
+import android.content.Context
 import com.example.mindvalleytest.network.MindValleyService
 import com.example.mindvalleytest.repository.IMindValleyRepository
 import com.example.mindvalleytest.repository.MindValleyRepository
 import com.example.mindvalleytest.room.MindValleyDb
 import com.example.mindvalleytest.util.DefaultDispatcherProvider
 import com.example.mindvalleytest.util.DispatcherProvider
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-class AppModule {
+object AppModule {
 
     @Singleton
     @Provides
@@ -31,19 +33,23 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideLocalDb(app: MindValleyApplication): MindValleyDb {
+    fun provideLocalDb(@ApplicationContext app: Context): MindValleyDb {
         return MindValleyDb.getInstance(app)
     }
+}
 
+@Module
+@InstallIn(ApplicationComponent::class)
+abstract class BindingModule {
     @Singleton
-    @Provides
-    fun provideRepository(
+    @Binds
+    abstract fun provideRepository(
         mindValleyRepository: MindValleyRepository
-    ): IMindValleyRepository = mindValleyRepository
+    ): IMindValleyRepository
 
     @Singleton
-    @Provides
-    fun provideCoroutineDispatcher(
+    @Binds
+    abstract fun provideCoroutineDispatcher(
         dispatcherProvider: DefaultDispatcherProvider
-    ): DispatcherProvider = dispatcherProvider
+    ): DispatcherProvider
 }

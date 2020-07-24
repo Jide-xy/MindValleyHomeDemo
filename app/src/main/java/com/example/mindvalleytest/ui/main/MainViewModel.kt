@@ -1,16 +1,42 @@
 package com.example.mindvalleytest.ui.main
 
+import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.switchMap
+import androidx.lifecycle.*
 import com.example.mindvalleytest.repository.IMindValleyRepository
+import com.zhuinden.livedatacombinetuplekt.combineTuple
 
-class MainViewModel @ViewModelInject constructor(repository: IMindValleyRepository) : ViewModel() {
+class MainViewModel
+@ViewModelInject constructor(
+    repository: IMindValleyRepository,
+    @Assisted private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
 
     private val _channelsLiveData = MutableLiveData<Unit>()
     val channelsLiveData = _channelsLiveData.switchMap {
         repository.getChannels().asLiveData()
+    }
+
+    private val _newEpisodesLiveData = MutableLiveData<Unit>()
+    val newEpisodesLiveData = _newEpisodesLiveData.switchMap {
+        repository.getNewEpisodes().asLiveData()
+    }
+
+    private val _categoriesLiveData = MutableLiveData<Unit>()
+    val categoriesLiveData = _categoriesLiveData.switchMap {
+        repository.getCategories().asLiveData()
+    }
+
+    val combinedStatusLiveData =
+        combineTuple(channelsLiveData, newEpisodesLiveData, categoriesLiveData)
+
+    init {
+        refresh()
+    }
+
+    fun refresh() {
+        _newEpisodesLiveData.value = Unit
+        _channelsLiveData.value = Unit
+        _categoriesLiveData.value = Unit
     }
 }

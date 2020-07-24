@@ -6,4 +6,6 @@
     <color name="episode_gray">#95989D</color>
     <color name="main_bg">#23272F</color>
     <color name="shimmer_bg">#D3D3D3</color>
+    <color name="white">@android:color/white</color>
+    <color name="channel_header_gray">#C1C1C1</color>
 </resources>

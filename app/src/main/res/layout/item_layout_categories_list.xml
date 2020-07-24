@@ -4,35 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
     android:layout_marginBottom="20dp"
     tools:background="@color/main_bg">
 
     <TextView
-        android:id="@+id/new_episodes_rv_title"
-        android:layout_width="wrap_content"
+        android:id="@+id/category_label"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:fontFamily="@font/roboto_condensed_bold"
-        android:text="@string/new_episodes"
+        android:text="@string/browse_by_categories"
         android:textColor="@color/episode_gray"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/new_episodes_rv"
+        android:id="@+id/categories_rv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_episodes_rv_title"
+        app:layout_constraintTop_toBottomOf="@+id/category_label"
+        app:spanCount="2"
         tools:itemCount="5"
         tools:listitem="@layout/item_layout_new_episode"
         tools:visibility="gone" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
