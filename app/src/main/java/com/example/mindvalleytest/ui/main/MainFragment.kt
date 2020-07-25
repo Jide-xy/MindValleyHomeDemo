@@ -11,11 +11,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.mindvalleytest.core.util.NetworkStatus
 import com.example.mindvalleytest.databinding.MainFragmentBinding
 import com.example.mindvalleytest.ui.main.categories.adapters.CategoryListAdapter
 import com.example.mindvalleytest.ui.main.channels.adapters.ChannelListAdapter
 import com.example.mindvalleytest.ui.main.newepisodes.adapters.NewEpisodesListAdapter
-import com.example.mindvalleytest.util.NetworkStatus
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -77,7 +77,7 @@ class MainFragment : Fragment() {
                     if (it.data.isNullOrEmpty()) {
                         channelListAdapter.setLoading()
                     } else {
-                        channelListAdapter.setEpisodes(it.data)
+                        channelListAdapter.setEpisodes(it.data!!)
                     }
                 }
                 is NetworkStatus.Error -> {
@@ -96,7 +96,7 @@ class MainFragment : Fragment() {
                     if (it.data.isNullOrEmpty()) {
                         newEpisodeListAdapter.setLoading()
                     } else {
-                        newEpisodeListAdapter.setEpisodes(it.data)
+                        newEpisodeListAdapter.setEpisodes(it.data!!)
                     }
                 }
                 is NetworkStatus.Error -> {
@@ -115,7 +115,7 @@ class MainFragment : Fragment() {
                     if (it.data.isNullOrEmpty()) {
                         categoryListAdapter.setLoading()
                     } else {
-                        categoryListAdapter.setList(it.data)
+                        categoryListAdapter.setList(it.data!!)
                     }
                 }
                 is NetworkStatus.Error -> {

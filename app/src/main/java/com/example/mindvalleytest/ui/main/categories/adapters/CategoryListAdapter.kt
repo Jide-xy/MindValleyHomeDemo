@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mindvalleytest.R
+import com.example.mindvalleytest.core.room.entities.Category
 import com.example.mindvalleytest.databinding.ItemLayoutCategoriesListBinding
 import com.example.mindvalleytest.databinding.ItemLayoutCategoryListShimmerBinding
-import com.example.mindvalleytest.room.entities.Category
 import com.example.mindvalleytest.ui.main.ViewState
 import com.example.mindvalleytest.util.GridSpacingItemDecoration
 import com.example.mindvalleytest.util.ViewUtils.dpToPx

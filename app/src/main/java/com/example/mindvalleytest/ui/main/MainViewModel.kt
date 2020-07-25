@@ -3,12 +3,11 @@ package com.example.mindvalleytest.ui.main
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import com.example.mindvalleytest.repository.IMindValleyRepository
 import com.zhuinden.livedatacombinetuplekt.combineTuple
 
 class MainViewModel
 @ViewModelInject constructor(
-    repository: IMindValleyRepository,
+    repository: com.example.mindvalleytest.core.repository.IMindValleyRepository,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 

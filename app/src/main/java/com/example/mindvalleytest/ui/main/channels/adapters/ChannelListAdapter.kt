@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import coil.transform.CircleCropTransformation
 import com.example.mindvalleytest.R
+import com.example.mindvalleytest.core.room.models.ChannelsWithCoursesAndSeries
 import com.example.mindvalleytest.databinding.ItemLayoutChannelListBinding
 import com.example.mindvalleytest.databinding.ItemLayoutCourseListShimmerBinding
 import com.example.mindvalleytest.databinding.ItemLayoutSeriesListShimmerBinding
-import com.example.mindvalleytest.room.models.ChannelsWithCoursesAndSeries
 import com.example.mindvalleytest.ui.main.ViewState
 
 class ChannelListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

@@ -3,8 +3,8 @@ package com.example.mindvalleytest.ui.main.newepisodes.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mindvalleytest.core.room.entities.NewEpisode
 import com.example.mindvalleytest.databinding.ItemLayoutNewEpisodeBinding
-import com.example.mindvalleytest.room.entities.NewEpisode
 
 class NewEpisodeAdapter : RecyclerView.Adapter<NewEpisodeViewHolder>() {
 

@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mindvalleytest.R
+import com.example.mindvalleytest.core.room.entities.NewEpisode
 import com.example.mindvalleytest.databinding.ItemLayoutNewEpisodesRvBinding
 import com.example.mindvalleytest.databinding.ItemLayoutNewEpisodesRvShimmerBinding
-import com.example.mindvalleytest.room.entities.NewEpisode
 import com.example.mindvalleytest.ui.main.ViewState
 
 class NewEpisodesListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

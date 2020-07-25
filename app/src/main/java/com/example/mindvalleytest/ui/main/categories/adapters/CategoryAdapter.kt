@@ -3,8 +3,8 @@ package com.example.mindvalleytest.ui.main.categories.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mindvalleytest.core.room.entities.Category
 import com.example.mindvalleytest.databinding.ItemLayoutCategoryBinding
-import com.example.mindvalleytest.room.entities.Category
 
 class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
