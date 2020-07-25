@@ -10,8 +10,13 @@ import com.example.mindvalleytest.core.room.entities.NewEpisode
 import com.example.mindvalleytest.databinding.ItemLayoutNewEpisodesRvBinding
 import com.example.mindvalleytest.databinding.ItemLayoutNewEpisodesRvShimmerBinding
 import com.example.mindvalleytest.ui.main.ViewState
+import com.example.mindvalleytest.util.imageloading.ImageLoader
+import dagger.hilt.android.scopes.FragmentScoped
+import javax.inject.Inject
 
-class NewEpisodesListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+@FragmentScoped
+class NewEpisodesListAdapter @Inject constructor(private val imageLoader: ImageLoader) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var newEpisodes: List<NewEpisode> = emptyList()
     private var rvPosition: Parcelable? = null
@@ -74,7 +79,7 @@ class NewEpisodesListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class NewEpisodesListViewHolder(private val binding: ItemLayoutNewEpisodesRvBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private val adapter = NewEpisodeAdapter()
+        private val adapter = NewEpisodeAdapter(imageLoader)
 
         init {
             binding.newEpisodesRv.adapter = adapter

@@ -7,18 +7,19 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import coil.api.load
 import com.example.mindvalleytest.R
 import com.example.mindvalleytest.core.room.models.ChannelsWithCoursesAndSeries
 import com.example.mindvalleytest.databinding.ItemLayoutNewEpisodeBinding
 import com.example.mindvalleytest.databinding.ItemLayoutSeriesBinding
+import com.example.mindvalleytest.util.imageloading.ImageLoader
 
 
-class ChannelAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ChannelAdapter(private val imageLoader: ImageLoader) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var channel: ChannelsWithCoursesAndSeries? = null
 
-    fun setChannel(channelsWithCoursesAndSeries: com.example.mindvalleytest.core.room.models.ChannelsWithCoursesAndSeries) {
+    fun setChannel(channelsWithCoursesAndSeries: ChannelsWithCoursesAndSeries) {
         channel = channelsWithCoursesAndSeries
         notifyDataSetChanged()
     }
@@ -67,7 +68,7 @@ class ChannelAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(course: com.example.mindvalleytest.core.room.entities.Course) {
             binding.channelTitle.isVisible = false
             binding.episodeTitle.text = course.title
-            binding.newEpisodeImageView.load(course.url)
+            imageLoader.load(binding.newEpisodeImageView, course.url)
         }
     }
 
@@ -91,7 +92,7 @@ class ChannelAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(series: com.example.mindvalleytest.core.room.entities.Series) {
             binding.seriesTitle.text = series.title
-            binding.seriesImageView.load(series.url)
+            imageLoader.load(binding.seriesImageView, series.url)
         }
 
     }

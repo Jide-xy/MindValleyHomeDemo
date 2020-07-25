@@ -1,5 +1,6 @@
 package com.example.mindvalleytest.ui.main
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -18,6 +19,7 @@ import com.example.mindvalleytest.ui.main.channels.adapters.ChannelListAdapter
 import com.example.mindvalleytest.ui.main.newepisodes.adapters.NewEpisodesListAdapter
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -28,22 +30,32 @@ class MainFragment : Fragment() {
 // onDestroyView.
     private val binding get() = _binding!!
 
-    private val newEpisodeListAdapter = NewEpisodesListAdapter()
-    private val channelListAdapter = ChannelListAdapter()
+    @Inject
+    lateinit var newEpisodeListAdapter: NewEpisodesListAdapter
+
+    @Inject
+    lateinit var channelListAdapter: ChannelListAdapter
+
     private val categoryListAdapter = CategoryListAdapter()
 
-    private val concatAdapter = ConcatAdapter(
-        HeaderAdapter(),
-        newEpisodeListAdapter,
-        channelListAdapter,
-        categoryListAdapter
-    )
+    private lateinit var concatAdapter: ConcatAdapter
+
 
     companion object {
         fun newInstance() = MainFragment()
     }
 
     private val viewModel by viewModels<MainViewModel>()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        concatAdapter = ConcatAdapter(
+            HeaderAdapter(),
+            newEpisodeListAdapter,
+            channelListAdapter,
+            categoryListAdapter
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

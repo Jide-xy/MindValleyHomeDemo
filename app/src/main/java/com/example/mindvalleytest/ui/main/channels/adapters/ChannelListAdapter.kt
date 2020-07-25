@@ -4,16 +4,19 @@ import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.api.load
-import coil.transform.CircleCropTransformation
 import com.example.mindvalleytest.R
 import com.example.mindvalleytest.core.room.models.ChannelsWithCoursesAndSeries
 import com.example.mindvalleytest.databinding.ItemLayoutChannelListBinding
 import com.example.mindvalleytest.databinding.ItemLayoutCourseListShimmerBinding
 import com.example.mindvalleytest.databinding.ItemLayoutSeriesListShimmerBinding
 import com.example.mindvalleytest.ui.main.ViewState
+import com.example.mindvalleytest.util.imageloading.ImageLoader
+import dagger.hilt.android.scopes.FragmentScoped
+import javax.inject.Inject
 
-class ChannelListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+@FragmentScoped
+class ChannelListAdapter @Inject constructor(private val imageLoader: ImageLoader) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var items: List<ChannelsWithCoursesAndSeries> = emptyList()
     private var rvPosition = mutableListOf<Parcelable?>()
@@ -93,7 +96,7 @@ class ChannelListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class ChannelListViewHolder(private val binding: ItemLayoutChannelListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private val adapter = ChannelAdapter()
+        private val adapter = ChannelAdapter(imageLoader)
 
         init {
             binding.newEpisodesRv.adapter = adapter
@@ -104,14 +107,12 @@ class ChannelListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             binding.count.text = if (channelWithCoursesAndSeries.isSeries()) {
                 "${channelWithCoursesAndSeries.series.size} series"
             } else "${channelWithCoursesAndSeries.courses.size} episodes"
-            binding.channelIcon.load(
-                channelWithCoursesAndSeries.channel.iconAssetUrl
-                    ?: channelWithCoursesAndSeries.channel.coverAssetUrl
-            ) {
-                crossfade(true)
-                placeholder(R.drawable.channel_icon_placeholder)
-                transformations(CircleCropTransformation())
-            }
+            imageLoader.load(
+                binding.channelIcon, channelWithCoursesAndSeries.channel.iconAssetUrl
+                    ?: channelWithCoursesAndSeries.channel.coverAssetUrl.orEmpty(),
+                R.drawable.channel_icon_placeholder,
+                crossFade = true, isCircle = true
+            )
             adapter.setChannel(channelWithCoursesAndSeries)
             rvPosition[bindingAdapterPosition]?.let {
                 binding.newEpisodesRv.layoutManager?.onRestoreInstanceState(it)
