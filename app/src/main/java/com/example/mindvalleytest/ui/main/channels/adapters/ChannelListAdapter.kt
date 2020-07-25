@@ -87,7 +87,7 @@ class ChannelListAdapter @Inject constructor(private val imageLoader: ImageLoade
 
     override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
         when {
-            holder is ChannelListViewHolder && holder.bindingAdapterPosition != RecyclerView.NO_POSITION -> rvPosition[holder.bindingAdapterPosition] =
+            holder is ChannelListViewHolder && holder.lastPosition != RecyclerView.NO_POSITION -> rvPosition[holder.lastPosition] =
                 holder.getRecyclerViewSavedState()
         }
         super.onViewRecycled(holder)
@@ -97,12 +97,14 @@ class ChannelListAdapter @Inject constructor(private val imageLoader: ImageLoade
         RecyclerView.ViewHolder(binding.root) {
 
         private val adapter = ChannelAdapter(imageLoader)
+        var lastPosition = RecyclerView.NO_POSITION
 
         init {
             binding.newEpisodesRv.adapter = adapter
         }
 
         fun bind(channelWithCoursesAndSeries: ChannelsWithCoursesAndSeries) {
+            lastPosition = bindingAdapterPosition
             binding.channelTitle.text = channelWithCoursesAndSeries.channel.title
             binding.count.text = if (channelWithCoursesAndSeries.isSeries()) {
                 "${channelWithCoursesAndSeries.series.size} series"
