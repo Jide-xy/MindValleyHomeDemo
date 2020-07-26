@@ -1,14 +1,20 @@
 package com.example.mindvalleytest.core.util.mappers
 
+import com.example.mindvalleytest.core.network.models.ChannelsResponse
+import com.example.mindvalleytest.core.room.entities.Channel
+import com.example.mindvalleytest.core.room.entities.Course
+import com.example.mindvalleytest.core.room.entities.Series
+import com.example.mindvalleytest.core.room.models.ChannelsWithCoursesAndSeries
+import com.example.mindvalleytest.core.util.Mapper
 import javax.inject.Inject
 
 class ChannelMapper @Inject constructor() :
-    com.example.mindvalleytest.core.util.Mapper<com.example.mindvalleytest.core.network.models.ChannelsResponse, List<com.example.mindvalleytest.core.room.models.ChannelsWithCoursesAndSeries>> {
-    override suspend fun map(from: com.example.mindvalleytest.core.network.models.ChannelsResponse): List<com.example.mindvalleytest.core.room.models.ChannelsWithCoursesAndSeries> {
+    Mapper<ChannelsResponse, List<ChannelsWithCoursesAndSeries>> {
+    override suspend fun map(from: ChannelsResponse): List<ChannelsWithCoursesAndSeries> {
         return from.channels.map {
             with(it) {
-                com.example.mindvalleytest.core.room.models.ChannelsWithCoursesAndSeries(
-                    com.example.mindvalleytest.core.room.entities.Channel(
+                ChannelsWithCoursesAndSeries(
+                    Channel(
                         id.orEmpty(),
                         title,
                         mediaCount,
@@ -16,7 +22,7 @@ class ChannelMapper @Inject constructor() :
                         coverAsset.url, slug
                     ),
                     this.series.map { apiSeries ->
-                        com.example.mindvalleytest.core.room.entities.Series(
+                        Series(
                             apiSeries.title,
                             apiSeries.coverAsset.url,
                             id.orEmpty(),
@@ -24,7 +30,7 @@ class ChannelMapper @Inject constructor() :
                         )
                     },
                     this.latestMedia.map { course ->
-                        com.example.mindvalleytest.core.room.entities.Course(
+                        Course(
                             course.type,
                             course.title,
                             course.coverAsset.url,

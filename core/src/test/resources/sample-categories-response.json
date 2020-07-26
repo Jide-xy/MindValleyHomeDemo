@@ -1,0 +1,42 @@
+{
+  "data": {
+    "categories": [
+      {
+        "name": "Career"
+      },
+      {
+        "name": "Character"
+      },
+      {
+        "name": "Emotional"
+      },
+      {
+        "name": "Financial"
+      },
+      {
+        "name": "Health & Fitness"
+      },
+      {
+        "name": "Intellectual"
+      },
+      {
+        "name": "Life Vision"
+      },
+      {
+        "name": "Love Relationship"
+      },
+      {
+        "name": "Parenting"
+      },
+      {
+        "name": "Quality of Life"
+      },
+      {
+        "name": "Social Life"
+      },
+      {
+        "name": "Spiritual"
+      }
+    ]
+  }
+}
