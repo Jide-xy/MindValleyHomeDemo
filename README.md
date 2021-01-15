@@ -1,11 +1,19 @@
-# MindValley Test
 
-### What parts of the test did you find challenging and why?
+# MindValley Home Demo
 
-- Restoring the position of the nested `RecyclerView` proved challenging as the new `ConcatAdapter` returned `NO_POSITION` in `onViewRecycled`. I solved this by caching the last position of the `ViewHolder` in `onBindViewHolder`
-- I found writing the UI test challenging because `Hilt` is relatively new and resources to solve problems faced were limited. However, I was able to complete the setup successfully. But, due to time constraints, I was unable to write proper UI test after the setup.
 
-### What feature would you like to add in the future to improve the project?
+This mimics the homepage of the MindValley app using RecyclerVIew ConcatAdapter
 
-- I would use a `ListAdapter` to optimize the performance of the `RecyclerViews`
-- I would create error `ViewHolders` with retry buttons for each section to allow refreshing each section independently
+## Features
+* Multiple view types in Recyclerview using ConcatAdapter
+* Layer modules
+* Dagger Hilt
+* Offline-first
+
+## Libraries
+*   [RecyclerView ConcatAdapter](https://developer.android.com/reference/androidx/recyclerview/widget/ConcatAdapter)
+*   [Kotlin Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
+*   [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+*   [ShimmerLayout](https://github.com/facebook/shimmer-android)
+*   [Dagger Hilt](https://dagger.dev/hilt)
+*   [Room](https://developer.android.com/training/data-storage/room)
